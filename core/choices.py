@@ -10,7 +10,7 @@ class GenderChoices:
     ]
     
     
-class UserStatusChoices:
+class StatusChoices:
     Active = 'active'
     Inactive = "inactive"
     Removed = 'removed'
@@ -20,3 +20,17 @@ class UserStatusChoices:
         (Inactive, 'Inactive'),
         (Removed, 'Removed'),
     ]
+    
+class RoleChoices:
+    Owner = 'owner'
+    Admin = 'admin'
+    Manager = 'manager'
+    Staff = 'staff'
+    
+    CHOICES = [
+        (Owner, 'Owner'),
+        (Admin, 'Admin'),
+        (Manager, 'Manager'),
+        (Staff, 'Staff'),
+    ]
+    
