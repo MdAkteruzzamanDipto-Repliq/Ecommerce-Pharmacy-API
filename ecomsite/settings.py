@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'core',
+    'rest_framework_simplejwt',
     'versatileimagefield',
+    'phonenumber_field',
+    'core',
+    'user',
+    
 ]
 
 MIDDLEWARE = [
@@ -189,5 +193,18 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     'headshot': [
         ('headshot_small', 'crop__150x175'),
     ]
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=20),
 }
 

@@ -4,9 +4,9 @@ class GenderChoices:
     Other = 'other'
     
     CHOICES = [
-        (Male, 'male'),
-        (Female, 'female'),
-        (Other, 'other'),
+        (Male, 'Male'),
+        (Female, 'Female'),
+        (Other, 'Other'),
     ]
     
     
@@ -16,7 +16,7 @@ class UserStatusChoices:
     Removed = 'removed'
     
     CHOICES = [
-        (Active, 'active'),
-        (Inactive, 'inactive'),
-        (Removed, 'removed'),
+        (Active, 'Active'),
+        (Inactive, 'Inactive'),
+        (Removed, 'Removed'),
     ]

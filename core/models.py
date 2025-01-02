@@ -5,6 +5,8 @@ from django.utils import timezone
 from autoslug import AutoSlugField
 from versatileimagefield.fields import VersatileImageField
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 import uuid
 
 from .managers import UserManager
@@ -19,14 +21,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=11, null=True, blank=True)
-    gender = models.CharField(max_length=10, choices=GenderChoices.CHOICES, null=True, blank=True)
-    address = models.CharField(max_length=255, null=True, blank=True)
-    thana = models.CharField(max_length=255, null=True, blank=True)
-    city = models.CharField(max_length=255, null=True, blank=True)
-    postal_code = models.IntegerField(null=True, blank=True)
-    country = models.CharField(max_length=255, null=True, blank=True)
-    image = VersatileImageField('Image', upload_to='images/core/', blank=True, null=True)
+    phone = PhoneNumberField(blank=True)
+    gender = models.CharField(max_length=10, choices=GenderChoices.CHOICES, blank=True)
+    address = models.CharField(max_length=255, blank=True)
+    thana = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=255, blank=True)
+    postal_code = models.IntegerField(blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True)
+    image = VersatileImageField('Image', upload_to='images/user/', blank=True,)
     status = models.CharField(max_length=10, choices=UserStatusChoices.CHOICES, default=UserStatusChoices.Active)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
