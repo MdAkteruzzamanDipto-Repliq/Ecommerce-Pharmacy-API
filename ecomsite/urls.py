@@ -11,4 +11,5 @@ urlpatterns = [
     path('api/v1/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
     path('api/v1/user/', include('user.urls')),
     path('api/v1/organization/', include('organization.urls')),
+    path('api/v1/product/', include('product.urls')),
 ] + debug_toolbar_urls()

@@ -10,7 +10,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 import uuid
 
 from .managers import UserManager
-from .choices import GenderChoices, StatusChoices, RoleChoices
+from .choices import GenderChoices, StatusChoices, RoleChoices, ProductStockChoices, ProductStatusChoices
 
 # Create your models here.
 
@@ -77,3 +77,34 @@ class UserOrganization(models.Model):
     def __str__(self):
         return self.user.username +  " " + self.organization.name +  " " + self.role
     
+def generate_slug(instance):
+    return f"{instance.name}-{instance.location}".lower()
+
+class Product(models.Model):
+    uid = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    manufacturing_date = models.DateField()
+    expired_date = models.DateField()
+    price = models.FloatField()
+    image = VersatileImageField('Image', upload_to='images/product/', blank=True)
+    availability = models.CharField(max_length=20, choices=ProductStockChoices.CHOICES, default=ProductStockChoices.InStock)
+    avg_rating = models.FloatField(blank=True)
+    brand = models.CharField(max_length=255)
+    status = models.CharField(max_length=20, choices=ProductStatusChoices.CHOICES, default=ProductStatusChoices.Published)
+    slug = AutoSlugField(
+        populate_from=generate_slug,
+        unique=True
+    )
+
+    def __str__(self):
+        return self.name
+    
+class Category(models.Model):
+    uid = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    slug = AutoSlugField(populate_from='name', unique=True)
+    
+    def __str__(self):
+        return self.name

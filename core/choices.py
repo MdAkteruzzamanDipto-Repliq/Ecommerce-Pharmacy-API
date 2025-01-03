@@ -60,5 +60,21 @@ class ManagerRoleChoices:
     CHOICES = [
         (Staff, 'Staff'),
     ]
-  
+
+class ProductStockChoices:
+    InStock = 'in_stock'
+    OutOfStock = 'out_of_stock'
     
+    CHOICES = [
+        (InStock, 'In Stock'),
+        (OutOfStock, 'Out of Stock'),
+    ]
+
+class ProductStatusChoices:
+    Draft = 'draft'
+    Published = 'published'
+    
+    CHOICES = [
+        (Draft, 'Draft'),
+        (Published, 'Published'),
+    ]
