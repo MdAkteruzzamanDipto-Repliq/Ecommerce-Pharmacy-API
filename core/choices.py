@@ -33,4 +33,32 @@ class RoleChoices:
         (Manager, 'Manager'),
         (Staff, 'Staff'),
     ]
+
+class OwnerRoleChoices:
+    Admin = 'admin'
+    Manager = 'manager'
+    Staff = 'staff'
+    
+    CHOICES = [
+        (Admin, 'Admin'),
+        (Manager, 'Manager'),
+        (Staff, 'Staff'),
+    ]
+    
+class AdminRoleChoices:
+    Manager = 'manager'
+    Staff = 'staff'
+    
+    CHOICES = [
+        (Manager, 'Manager'),
+        (Staff, 'Staff'),
+    ]
+
+class ManagerRoleChoices:
+    Staff = 'staff'
+    
+    CHOICES = [
+        (Staff, 'Staff'),
+    ]
+  
     

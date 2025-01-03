@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from rest_framework import serializers
 
 from core.models import User
+from core.choices import AdminRoleChoices
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,10 +28,6 @@ class UserSerializer(serializers.ModelSerializer):
         
         return user
     
-    
-    
-# class SuperuserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password', 'first_name', 'last_name']
-        
+
+# class OwnerCreateUserSerializer(serializers.ModelSerializer):
+#     status = serializers.CharField(choices = AdminRoleChoices.CHOICES)

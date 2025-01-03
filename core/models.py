@@ -73,8 +73,6 @@ class UserOrganization(models.Model):
     salary = models.FloatField()
     # slug = AutoSlugField(populate_from = 'user.name')
     
-    # if Organization.status == StatusChoices.Removed or User.status == StatusChoices.Removed:
-    #     status = StatusChoices.Removed
         
     def __str__(self):
         return self.user.username +  " " + self.organization.name +  " " + self.role
